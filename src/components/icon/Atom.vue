@@ -2,7 +2,7 @@
 const props = defineProps({
     size: {
         type: Number,
-        default: 45,
+        default: 40,
     },
     color: {
         type: String,

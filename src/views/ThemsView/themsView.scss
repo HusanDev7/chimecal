@@ -80,6 +80,9 @@
             // 12px
             margin: 20px 0;
             cursor: pointer;
+            white-space: nowrap; /* Запрет переноса текста */
+            overflow: hidden; /* Скрытие текста, выходящего за пределы контейнера */
+            text-overflow: ellipsis; /* Добавление многоточия в конце текста */
 
             @media (max-width: 800px) {
                 font-size: 12px;

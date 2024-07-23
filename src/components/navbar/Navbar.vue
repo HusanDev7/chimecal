@@ -7,7 +7,7 @@ import Atom from "@/components/icon/Atom.vue";
       <nav class="navbar">
         <RouterLink to="/menu"
           ><h4 class="navbar__logo">All Kimyogar</h4>
-          <Atom />
+          <Atom class="logo-icon" />
         </RouterLink>
         <ul class="navbar__list">
           <li class="navbar__list-item">

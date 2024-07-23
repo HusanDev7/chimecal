@@ -23,6 +23,10 @@
         display: flex;
         font-size: 27px;
         color: #fff;
+
+        @media (max-width: 390px) {
+            font-size: 21px;
+        }
     }
 
     &__info {
