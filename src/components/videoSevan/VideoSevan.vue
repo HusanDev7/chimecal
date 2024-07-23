@@ -7,7 +7,7 @@ const videoDescription = "Bu videoda Kislota ertmalaring indikatorlarga tasiri h
     <div class="container">
         <div class="video">
             <div class="video-item">
-                <!-- <video class="video-mp4" src="@/assets/video/7.mp4" controls></video> -->
+                <video class="video-mp4" src="@/assets/video/7.mp4" controls></video>
             </div>
             <div class="video-item">
                 <h3 class="video-item-title">{{ videoTitle }}</h3>
