@@ -1,0 +1,352 @@
+<script setup>
+import { ref, computed } from "vue";
+import Next from "@/components/icon/Next.vue";
+import Search from "@/components/icon/Search.vue";
+
+const thems = [
+  {
+    id: 1,
+    name: "Kimyo fani va uning vazifalari",
+    link: "/public/docs/1-Kimyo fani uning vazifalari.pdf",
+  },
+  {
+    id: 2,
+    name: "Modda va uning xossalari",
+    link: "/public/docs/2-Modda va uning xossalari.pdf",
+  },
+  {
+    id: 3,
+    name: "Kimyo xonasidagi jihozlar bilan ishlashda mehnat xafsizligi qoidalari",
+    link: "/public/docs/3-Kimyo xonasidagi jihozlar bilan tanishish.pdf",
+  },
+  {
+    id: 4,
+    name: "Amaliy mashg'ulot",
+    link: "/public/docs/4-Amaliy mashg‘ulot..pdf",
+  },
+  {
+    id: 5,
+    name: "Sof modda va aralashmalar",
+    link: "/public/docs/5-Sof va aralashma moddalar.pdf",
+  },
+  {
+    id: 6,
+    name: "Amaliy mashg'ulot",
+    link: "/public/docs/6-Amaliy mashg'ulot.pdf",
+  },
+  {
+    id: 7,
+    name: "Moddalarning agregat holatining o'rganishi",
+    link: "/public/docs/7-Moddalarning agregat holatining o‘zgarishi.pdf",
+  },
+  {
+    id: 8,
+    name: "Fizik va kimyoviy hodisalar",
+    link: "/public/docs/8-Fizik va kimyoviy hodisalar.pdf",
+  },
+  {
+    id: 9,
+    name: "IV-Amaliy mashh'ulot",
+    link: "/public/docs/9-I BOB. 9-MAVZU.pdf",
+  },
+  {
+    id: 10,
+    name: "Masalalar yechish",
+    link: "/public/docs/10-Masalalar yechish.pdf",
+  },
+  {
+    id: 11,
+    name: "Atom",
+    link: "/public/docs/12-Atom va uning tuzilishi, proton, neytron va elektronlar.pdf",
+  },
+  {
+    id: 12,
+    name: "Atom va uning tuzilishi va proton neytron va elektronlar",
+    link: "/public/docs/12-Atom va uning tuzilishi, proton, neytron va elektronlar.pdf",
+  },
+  {
+    id: 13,
+    name: "kimyoviy element kimyoviy belgi",
+    link: "/public/docs/13-Kimyoviy element. Kimyoviy belgi..pdf",
+  },
+  {
+    id: 14,
+    name: "kimyoviy elementning nisbiy atom massasi",
+    link: "/public/docs/14-Kimyoviy elementning nisbiy atom massasi.pdf",
+  },
+  {
+    id: 15,
+    name: "Izotoplar Izobarlar Izotonlar",
+    link: "/public/docs/15-Izotoplar. Izobarlar. Izotonlar.pdf",
+  },
+  {
+    id: 16,
+    name: "kimyoviy formula Valentlik.",
+    link: "/public/docs/16-Kimyoviy formula. Valentlik.pdf",
+  },
+  {
+    id: 17,
+    name: "Molekula. Nisbiy molekular massa",
+    link: "/public/docs/17-Molekula. Nisbiy molekulyar massa.pdf",
+  },
+  {
+    id: 18,
+    name: "Oddiy va murakkab moddalar",
+    link: "/public/docs/18-Oddiy va murakkab moddalar.pdf",
+  },
+  {
+    id: 19,
+    name: "Modda miqdori Avogadro doimiysi. Moddaning molyar massasi",
+    link: "/public/docs/19-Modda miqdori. Avogadro doimiysi. Moddaning molyar massasi.pdf",
+  },
+  {
+    id: 20,
+    name: "Valentlikka oid mashqlar yechish",
+    link: "/public/docs/20-Valentlikka oid mashqlar yechish.pdf",
+  },
+  {
+    id: 21,
+    name: "Amaliy mashg'ulot",
+    link: "/public/docs/21-Amaliy mashg‘ulot..pdf",
+  },
+  {
+    id: 22,
+    name: "Kimyoviy reaksiya tenglamalarini tuzish",
+    link: "/public/docs/22-Kimyoviy reaksiyalar tenglamalarini tuzish.pdf",
+  },
+  {
+    id: 23,
+    name: "Kimyoviy reaksiya tuzishga oid mashqlar",
+    link: "/public/docs/23-24-Kimyoviy reaksiyalarning teng.pdf",
+  },
+  {
+    id: 24,
+    name: "Bobga doir testlar yechish mashqlar bajarish",
+    link: "/public/docs/23-24-Kimyoviy reaksiyalarning teng.pdf",
+  },
+  {
+    id: 25,
+    name: "Kimyoviy elementlaring tasniflashi",
+    link: "/public/docs/23-24-Kimyoviy reaksiyalarning teng.pdf",
+  },
+  {
+    id: 26,
+    name: "Kimyoviy elementlar tabiy oilalari",
+    link: "/public/docs/III-bob. 2-Kimyoviy elementlarning tabiiy oilalari_1.pdf",
+  },
+  {
+    id: 27,
+    name: "Kimyoviy elementlar davriy jadvali",
+    link: "/public/docs/III-bob. 1-Davriy jadval (2).pdf",
+  },
+  {
+    id: 28,
+    name: "Bobga doir testlar yechish mashqlar bajarish",
+    link: "/public/docs/III-bob. 4-Bobga doir testlar yechish, mashqlar bajarish.pdf",
+  },
+  {
+    id: 29,
+    name: "Havo va uning tarkibi",
+    link: "/public/docs/IV-bob.1-Havo va uning tarkibi.pdf",
+  },
+  {
+    id: 30,
+    name: "Havoning ifloslanishiga ta'sir etuvchi omillar",
+    link: "/public/docs/IV-bob.1-Havo va uning tarkibi.pdf",
+  },
+  {
+    id: 31,
+    name: "Kislorodning umumiy tavsifi",
+    link: "/public/docs/IV-bob.3-Kislorodning.pdf",
+  },
+  {
+    id: 32,
+    name: "Kislorodning fizik xossalari va ishlatilishi",
+    link: "/public/docs/IV-bob.4-Kislorod.pdf",
+  },
+  {
+    id: 33,
+    name: "Kislorodning fizik xossalari va iahlatilishi",
+    link: "/public/docs/IV-bob.3-Kislorodning.pdf",
+  },
+  {
+    id: 34,
+    name: "Kislorodning kimyoviy xosssalari",
+    link: "/public/docs/IV-bob.5-Kislorodning kimyoviy xossalari.pdf",
+  },
+  { id: 35, name: "Yonish", link: "/public/docs/IV-bob.6-yonish.pdf" },
+  {
+    id: 36,
+    name: "Amaliy mashg'ulot",
+    link: "/public/docs/IV-bob.7-Amaliy mashg‘ulot..pdf",
+  },
+  {
+    id: 37,
+    name: "Ozon va uning ishlatilishi",
+    link: "/public/docs/IV-bob.8-Ozon va uning ishlatilishi.pdf",
+  },
+  {
+    id: 38,
+    name: "Kislorod va Ozoning biologik ahamiyati",
+    link: "/public/docs/IV-bob.9-Kislorod va azonning biologik ahamiyati.pdf",
+  },
+  { id: 39, name: "Oksidlar", link: "/public/docs/IV-bob.10.pdf" },
+  {
+    id: 40,
+    name: "Bobga doir masala va mashqlar",
+    link: "/public/docs/IV-bob.11-.pdf",
+  },
+  { id: 41, name: "Vodorod", link: "/public/docs/V-bob. 1-Vodorod.pdf" },
+  {
+    id: 42,
+    name: "Amaliy mashg'ulot",
+    link: "/public/docs/V-bob.2-Amaliy mashg‘ulot.pdf",
+  },
+  {
+    id: 43,
+    name: "Kislotalar",
+    link: "/public/docs/V-bob.4-kislotalar.pdf",
+  },
+  {
+    id: 44,
+    name: "Kislotali yomg'irlar",
+    link: "/public/docs/V-bob.7-Kislotali yomg‘irlar.pdf",
+  },
+  {
+    id: 45,
+    name: "Mashq va massalara yechish",
+    link: "/public/docs/V-bob.8-Mashq va masalalar yechish.pdf",
+  },
+  {
+    id: 46,
+    name: "Suvning tarkibi",
+    link: "/public/docs/VI-1-Suvning tarkibi.pdf",
+  },
+  {
+    id: 47,
+    name: "Suvning agregat holatlari va tabiatda aylanishi",
+    link: "/public/docs/VI-2-Suvning agregat holatlari va tabiatda aylanishi.pdf",
+  },
+  {
+    id: 48,
+    name: "Suvning fizik xossalari",
+    link: "/public/docs/VI-3-Suvnin.pdf",
+  },
+  {
+    id: 49,
+    name: "Suvning kimyoviy xossalari",
+    link: "/public/docs/VI-4-Suvning kimyoviy xossalari.pdf",
+  },
+  {
+    id: 50,
+    name: "Amaliy mashg'ulot",
+    link: "/public/docs/VI-5-Amaliy mashg‘ulot..pdf",
+  },
+  {
+    id: 51,
+    name: "Neytrallanish reaksiyalari",
+    link: "/public/docs/VI-6-Neytrallanish reaksiyalari.pdf",
+  },
+  {
+    id: 52,
+    name: "Suvning ifloslanishi va uni tozalash usullari",
+    link: "/public/docs/VI-7-Su.pdf",
+  },
+  {
+    id: 53,
+    name: "Massalalar yechish",
+    link: "/public/docs/VI-8-Masalalar yechish.pdf",
+  },
+  {
+    id: 54,
+    name: "Massalalar yechish",
+    link: "/public/docs/VI-8-Masalalar yechish.pdf",
+  },
+  {
+    id: 55,
+    name: "Tirik organizmdagi kimyoviy elementlar va ularning ahamiyati",
+    link: "/public/docs/VII-1-Tirik organizmlardagi kimyoviy elementlar va ularning ahamiyati.pdf",
+  },
+  {
+    id: 56,
+    name: "Oqsillar Yog'lar Uglevodlar",
+    link: "/public/docs/VII-2-Oqsillar. Yog‘lar. Uglevodlar.pdf",
+  },
+  { id: 57, name: "Vitaminlar", link: "/public/docs/VII-3-Vitaminlar.pdf" },
+  {
+    id: 58,
+    name: "Minerallarning inson hayotidagi ahamiyati",
+    link: "/public/docs/VII-4-Minerallarning inson hayotidagi ahamiyati.pdf",
+  },
+  {
+    id: 59,
+    name: "Olma tarkibini aniqlash",
+    link: "/public/docs/VII-5-Olma tarkibini aniqlash.pdf",
+  },
+  {
+    id: 60,
+    name: "Geologik kimyoviy birikmalar",
+    link: "/public/docs/VIII-1-Geologik kimyoviy birikmalar.pdf",
+  },
+  {
+    id: 61,
+    name: "O'zbekistondagi foydali qazilmalar va konlar",
+    link: "/public/docs/VIII-1-Geologik kimyoviy birikmalar.pdf",
+  },
+  {
+    id: 62,
+    name: "Foydali qazilmalarni ishlab chiqarishdagi ekologik aspektlar",
+    link: "/public/docs/VIII-2-O‘zbekistondagi foydali qazilmalar va konlar.pdf",
+  },
+  {
+    id: 63,
+    name: "Amaliy mashg'ulot Ekologik izni kamaytirish",
+    link: "/public/docs/VIII-3-Foydali qazilmalarni ishlab chiqarishdagi ekologik aspektlar.pdf",
+  },
+];
+
+const searchQuery = ref("");
+const query = ref("");
+
+const filteredThems = computed(() => {
+  return thems.filter((item) =>
+    item.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
+});
+
+const updateSearch = () => {
+  searchQuery.value = query.value;
+  searchQuery.value ? (query.value = "") : false;
+};
+</script>
+
+<template>
+  <div class="container">
+    <div class="thems">
+      <div class="thems-search">
+        <div class="thems-search-item">
+          <h3 class="thems-info">Malumotlar: {{ filteredThems.length }}</h3>
+        </div>
+        <div class="thems-search-item">
+          <div class="thems-search-box">
+            <input
+              class="thems-search-inp"
+              type="text"
+              v-model="query"
+              placeholder="Qidiruv"
+              @keypress.enter="updateSearch"
+              required
+            />
+            <button class="thems-btn" @click="updateSearch"><Search /></button>
+          </div>
+        </div>
+      </div>
+      <div class="thems-box" v-for="item in filteredThems" :key="item.id">
+        <a :href="item.link" class="thems-box-item">
+          <h3 class="thems-box-title">{{ item.name }}</h3>
+          <Next />
+        </a>
+      </div>
+    </div>
+  </div>
+</template>

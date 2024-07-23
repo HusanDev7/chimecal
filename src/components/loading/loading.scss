@@ -1,0 +1,143 @@
+.loading {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 999; // Increased z-index
+  background: #e8e5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-container {
+    width: 350px; // Increased size
+    height: 350px; // Increased size
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(30deg);
+  }
+}
+
+.potion-top {
+  width: 50px; // Increased size
+  height: 80px; // Increased size
+  position: absolute;
+  top: -50px; // Adjusted position
+  border-radius: 5px;
+  border: solid 5px #cac7c7;
+  border-bottom-color: #cac7c7;
+  background: #f9f5f5;
+  z-index: 3;
+
+  &-line {
+    position: absolute;
+    width: 15px; // Increased size
+    top: 12px; // Adjusted position
+    height: 4px; // Increased size
+    right: 3px; // Adjusted position
+    background: #fff;
+  }
+}
+
+.potion-neck {
+  width: 100px; // Increased size
+  height: 30px; // Increased size
+  position: absolute;
+  z-index: 4;
+  top: -21px; // Adjusted position
+  border-radius: 5px;
+  border: solid 5px #cac7c7;
+  background: #f9f5f5;
+}
+
+.potion-body {
+  width: 280px; // Increased size
+  height: 280px; // Increased size
+  border-radius: 50%;
+  border: solid 8px #cac7c7;
+  position: relative;
+  z-index: 2;
+}
+
+.potion-content {
+  width: 260px; // Increased size
+  height: 260px; // Increased size
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+  z-index: 2;
+  top: -4px; // Adjusted position
+  left: 3px; // Adjusted position
+  overflow: hidden;
+}
+
+.potion-content::after {
+  content: "";
+  position: absolute;
+  border-radius: 0.5em 0.5em 5.563em 5.563em;
+  width: 380px; // Increased size
+  height: 350px; // Increased size
+  bottom: -180px; // Adjusted position
+  left: -40px; // Adjusted position
+  background: #36dbc5;
+  border-radius: 40%;
+  animation: drift 3000ms infinite cubic-bezier(0.5, 0.7, 0.7, 0.5);
+}
+
+.blob-container {
+  width: 120px; // Increased size
+  height: 120px; // Increased size
+  position: absolute;
+  top: 40%;
+  z-index: 4;
+  left: 10%;
+}
+
+.blob-one,
+.blob-two,
+.blob-three {
+  position: absolute;
+  height: 30px; // Increased size
+  width: 30px; // Increased size
+  border-radius: 50%;
+  background: #fff;
+}
+
+.blob-one {
+  top: 30px; // Adjusted position
+  left: 35px; // Adjusted position
+}
+
+.blob-one::after,
+.blob-two::after,
+.blob-three::after {
+  content: "";
+  width: 24px; // Increased size
+  height: 24px; // Increased size
+  border-radius: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  background: #cac7c7;
+  left: 15px; // Adjusted position
+  top: 3px; // Adjusted position
+}
+
+.blob-two {
+  top: 45px; // Adjusted position
+  left: 0px; // Adjusted position
+}
+
+.blob-three {
+  top: 75px; // Adjusted position
+  left: 30px; // Adjusted position
+}
+
+@keyframes drift {
+  0% {
+    transform: translate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

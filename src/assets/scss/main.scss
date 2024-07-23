@@ -1,0 +1,26 @@
+@import "fonts.scss";
+@import "common.scss";
+
+// component styles here
+@import "@/components/navbar/navbar.scss";
+@import "@/components/loading/loading.scss";
+@import "@/components/videoOne/videoOne.scss";
+// component styles here
+
+// views styles here
+@import "@/views/HomeView/homeView.scss";
+@import "@/views/MenuView/menuView.scss";
+@import "@/views/InfoView/infoView.scss";
+@import "@/views/ThemsView/themsView.scss";
+@import "@/views/ControlWorkView/controlWorkView.scss";
+@import "@/views/PracticesView/practicesView.scss";
+@import "@/views/LabsView/labsView.scss";
+@import "@/views/ControlWorkView/ControlWork-1/controlWorkOne.scss";
+@import "@/views/ControlWorkView/ControlWork-2/controlWorkTwo.scss";
+@import "@/views/ControlWorkView/ControlWork-3/controlWorkThree.scss";
+@import "@/views/ControlWorkView/ControlWork-4/controlWorkFour.scss";
+@import "@/views/ControlWorkView/ControlWork-5/controlWorkFive.scss";
+@import "@/views/ControlWorkView/ControlWork-6/controlWorkSix.scss";
+@import "@/views/ControlWorkView/ControlWork-7/controlWorkSeven.scss";
+@import "@/views/ControlWorkView/ControlWork-8/controlWorkEight.scss";
+// views styles here
