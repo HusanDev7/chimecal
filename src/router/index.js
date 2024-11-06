@@ -153,6 +153,12 @@ const router = createRouter({
       component: () => import("@/components/videoTen/VideoTen.vue")
     },
 
+    {
+      path: "/atomic/",
+      name: "atomic",
+      component: () => import("../../public/3D-Items/Atomic/Atomic.vue")
+    }
+
   ]
 })
 
